@@ -2,32 +2,49 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Title</title>
 </head>
 <body>
-<h1>Message List</h1>
-<a href="/add">Add a message</a><br />
-<table>
-    <tr>
-
-        <th>Name</th>
-        <th>Date</th>
-        <th>Content</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="message : ${messages}">
-        <td th:text="${message.sentby}"></td>
-        <td th:text="${message.date}"></td>
-        <td th:text="${message.content}"></td>
-        <td>
-            <a th:href="@{/update/{id}(id=${message.id})}">Edit</a>
-            <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>
-            <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
-        </td>
-
-    </tr>
-
+<nav th:replace="base :: navbar"></nav>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Check out these posts!</h1>
+        <p>......</p>
+    </div>
 
 </div>
+<table class="table">
+    <thead>
+    <tr>
+
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tr th:each="message : ${messages}">
+        <td scope="row" th:text="${message.sentby}"></td>
+        <td scope="row"th:text="${message.date}"></td>
+        <td scope="row" th:text="${message.content}"></td>
+        <td scope="row">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a  class="dropdown-item" th:href="@{/update/{id}(id=${message.id})}">Edit</a>
+                    <a  class="dropdown-item"th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                    <a  class="dropdown-item" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+                 </div>
+            </div>
+         </td>
+    </tr>
+</table>
+    <nav th:replace="base :: footer"></nav>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
