@@ -8,40 +8,42 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
-<div class="jumbotron jumbotron-fluid bg-primary">
-    <div class="container ">
-        <h1>Check out these posts!</h1>
-        <p>......</p>
+<header>
+    <div class="jumbotron jumbotron-fluid text-center text-primary">
+        <div class="container">
+            <h1 class="display-4 font-weight-bold">Checkout Posts!</h1>
+        </div>
     </div>
-</div>
-<table class="table">
-    <thead>
-    <tr>
-
-        <th scope="col">Name</th>
-        <th scope="col">Date</th>
-        <th scope="col">Content</th>
-    </tr>
-    </thead>
-    <tr th:each="message : ${messages}">
-        <td scope="row" th:text="${message.sentby}"></td>
-        <td scope="row"th:text="${message.date}"></td>
-        <td scope="row" th:text="${message.content}"></td>
-        <td scope="row">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Actions
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a  class="dropdown-item" th:href="@{/update/{id}(id=${message.id})}">Edit</a>
-                    <a  class="dropdown-item"th:href="@{/detail/{id}(id=${message.id})}">Details</a>
-                    <a  class="dropdown-item" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
-                 </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+           <div class="card-body">
+                <div th:each="message : ${messages}">
+                    <div th:if="${message.image} !=null">
+                        <img class="card-img-top" th:src="${message.image}" alt="image posted" />
+                    </div>
+                            <h6 class="card-title text-bold text-center" th:text="${message.sentby}"></h6>
+                            <h7 class="card-subtitle mb-2 text-muted" th:text="${message.date}"></h7>
+                            <p class="card-text" th:text="${message.content}"></p>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a  class="dropdown-item" th:href="@{/update/{id}(id=${message.id})}">Edit</a>
+                                        <a  class="dropdown-item"th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                                        <a  class="dropdown-item" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+                                     </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </td>
-    </tr>
-</table>
+<div class="container">
     <footer th:replace="base :: footer"></footer>
+</div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

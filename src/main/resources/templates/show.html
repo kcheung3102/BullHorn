@@ -7,24 +7,23 @@
     <title>Title</title>
 </head>
 
-<body>
+<body class="d-flex flex-column">
 <nav th:replace="base :: navbar"></nav>
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title"><span th:text="${message.sentby}" ></span></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Posted On:<span th:text="${message.date}" ></span><br /></h6>
-        <p class="card-text">Message:<p th:text="${message.content}" ></p></p>
-        <button type="button" class="btn btn-outline-primary" th:href="@{/delete/{id}(id=${message.id})}" >Delete this message</button>
-    </div>
-</div>
-
-
-
-
-
-
-
-
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                                <img class="card-img-top" th:src="${message.image}" alt="Card image cap" />
+                            <h5 class="card-title"><span th:text="${message.sentby}" ></span></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Posted On:<span th:text="${message.date}" ></span><br /></h6>
+                            <p class="card-text">Message:<p th:text="${message.content}" ></p></p>
+                            <a type="button" class="btn btn-outline-primary" th:href="@{/delete/{id}(id=${message.id})}" >Delete this message</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <footer th:replace="base :: footer"></footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

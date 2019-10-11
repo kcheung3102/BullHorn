@@ -8,26 +8,28 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
-<form action="#" th:action="@{/process}" th:object="${message}" method="post">
+<form action="#" th:action="@{/add}" th:object="${message}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}" />
-    <div class="form-group" >
-        Message:<textarea rows="3" th:field="*{content}"  class="form-control"/>
+    <div class="form-group mx-sm-3 mb-2 ">
+        <span class="text-primary">Message:</span><textarea rows="3" th:field="*{content}"  class="form-control"/>
     <span th:if="${#fields.hasErrors('content')}"
           th:errors="*{content}"></span><br />
 
     </div>
-    <div class="form-group">
-        Date: <input type="text" th:field="*{date}" class="form-control" />
+    <div class="form-group mx-sm-3 mb-2">
+        <span class="text-primary">Date:</span> <input type="text" th:field="*{date}" class="form-control" />
     <span th:if="${#fields.hasErrors('date')}"
           th:errors="*{date}"></span><br />
     </div>
-    <div class="form-group">
-        SentBy:<input type="text" th:field="*{sentby}" class="form-control" />
+    <div class="form-group mx-sm-3 mb-2">
+        <span class="text-primary">SentBy:</span><input type="text" th:field="*{sentby}" class="form-control" />
     <span th:if="${#fields.hasErrors('sentby')}"
           th:errors="*{sentby}"></span><br />
-    </div>
-    <button type="submit" class="btn btn-outline-primary">Submit</button>
 
+        <input type="file" name="file" /><br/>
+
+    <button type="submit" class="btn btn-outline-primary">Submit</button>
+</form>
 
     <footer th:replace="base :: footer"></footer>
 

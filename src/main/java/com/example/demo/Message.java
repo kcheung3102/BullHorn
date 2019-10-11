@@ -24,6 +24,16 @@ public class Message {
     @Size(min = 1)
     private String sentby;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
+
     public long getId() {
         return id;
     }
